@@ -35,7 +35,7 @@ class Reservation extends Component {
     }
 
     handleReservation() {
-        console.log(JSON.stringify(this.state));
+        //console.log(JSON.stringify(this.state));
         this.toggleModal();
     }
 
@@ -43,6 +43,7 @@ class Reservation extends Component {
         return (
             <ScrollView>
                 <View style = {styles.formRow}>
+
                     <Text style = {styles.formLabel}>Number of Campers</Text>
                     <Picker
                     style = {styles.formItem}
