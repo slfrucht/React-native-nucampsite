@@ -5,10 +5,14 @@ export const fetchComments = () => dispatch => {
     return fetch(baseUrl + 'comments')
         .then(response => {
                 if (response.ok) {
+        console.log("comments ------ response OK!")
+
                     return response;
                 } else {
                     const error = new Error(`Error ${response.status}: ${response.statusText}`);
                     error.response = response;
+                console.log("error loading comments!")
+
                     throw error;
                 }
             },
@@ -38,10 +42,13 @@ export const fetchCampsites = () => dispatch => {
     return fetch(baseUrl + 'campsites')
         .then(response => {
                 if (response.ok) {
+        console.log("campsites ------ response OK!")
+
                     return response;
                 } else {
                     const error = new Error(`Error ${response.status}: ${response.statusText}`);
                     error.response = response;
+        console.log("error loading campsites!")
                     throw error;
                 }
             },
@@ -75,10 +82,13 @@ export const fetchPromotions = () => dispatch => {
     return fetch(baseUrl + 'promotions')
         .then(response => {
                 if (response.ok) {
+        console.log("promotions ------ response OK!")
                     return response;
                 } else {
                     const error = new Error(`Error ${response.status}: ${response.statusText}`);
                     error.response = response;
+                    console.log("error loading promotions!")
+
                     throw error;
                 }
             },
@@ -112,10 +122,13 @@ export const fetchPartners = () => dispatch => {
     return fetch(baseUrl + 'partners')
         .then(response => {
                 if (response.ok) {
+        console.log("partners ---===--- response OK!")
+
                     return response;
                 } else {
                     const error = new Error(`Error ${response.status}: ${response.statusText}`);
                     error.response = response;
+        console.log("error loading partners!")
                     throw error;
                 }
             },
