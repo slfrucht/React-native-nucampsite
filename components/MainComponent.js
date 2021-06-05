@@ -348,12 +348,15 @@ class Main extends Component {
         this.props.fetchPromotions();
         this.props.fetchPartners();
 
+/*
         NetInfo.fetch().then(connectionInfo => {
             (Platform.OS === "ios")
             ? Alert.alert("initial network connectivity type: " + connectionInfo.type)
             : ToastAndroid.show("initial network connectivity type: " + 
             connectionInfo.type, ToastAndroid.LONG);
         });
+        */
+        this.connectionInfo = this.showNetInfo();
 
         this.unsubscribeNetInfo = NetInfo.addEventListener(connectionInfo => {
             this.handleConnectivityChange(connectionInfo);
@@ -361,6 +364,17 @@ class Main extends Component {
     }
     componentWillUnmount() {
         this.unsubscribeNetInfo();
+    }
+
+    showNetInfo = async () => {
+        const connectionInfo = await NetInfo.fetch();
+        if(Platform.OS === "ios") {
+            Alert.alert("initial network connectivity type: " + connectionInfo.type);
+        } else {
+            ToastAndroid.show("initial network connectivity type: " + 
+            connectionInfo.type, ToastAndroid.LONG);
+        }
+        return connectionInfo;
     }
 
     handleConnectivityChange = connectionInfo => {
